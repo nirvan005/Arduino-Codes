@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\dac.obj" 
+TO ".\Objects\DigitalToAnalog2" 
+PRINT(".\Listings\DigitalToAnalog2.m51")

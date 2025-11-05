@@ -1,0 +1,126 @@
+C51 COMPILER V9.60.7.0   PRACTICE                                                          11/02/2025 23:52:18 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE PRACTICE
+OBJECT MODULE PLACED IN .\Objects\practice.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE practice.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\
+                    -practice.lst) TABS(2) OBJECT(.\Objects\practice.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #define LCD P3
+   3          #define DAC P1
+   4          #define SAMPLES 256
+   5          
+   6          sbit RS=P2^0;
+   7          sbit E=P2^1;
+   8          
+   9          unsigned char code sine[SAMPLES]={128, 131, 134, 137, 140, 144, 147, 150, 153, 156, 159, 162, 165, 168, 17
+             -1, 174,
+  10          177, 180, 183, 186, 188, 191, 194, 197, 199, 202, 204, 207, 209, 212, 214, 216,
+  11          219, 221, 223, 225, 227, 229, 231, 233, 234, 236, 238, 239, 241, 242, 244, 245,
+  12          246, 248, 249, 250, 250, 251, 252, 253, 253, 254, 254, 254, 255, 255, 255, 255,
+  13          255, 255, 255, 254, 254, 254, 253, 253, 252, 251, 250, 250, 249, 248, 246, 245,
+  14          244, 242, 241, 239, 238, 236, 234, 233, 231, 229, 227, 225, 223, 221, 219, 216,
+  15          214, 212, 209, 207, 204, 202, 199, 197, 194, 191, 188, 186, 183, 180, 177, 174,
+  16          171, 168, 165, 162, 159, 156, 153, 150, 147, 144, 140, 137, 134, 131, 128, 125,
+  17          122, 119, 116, 113, 110, 107, 104, 101, 99, 96, 93, 91, 88, 86, 83, 81,
+  18          79, 77, 74, 72, 70, 68, 66, 64, 63, 61, 59, 58, 56, 55, 53, 52,
+  19          51, 49, 48, 47, 47, 46, 45, 44, 44, 43, 43, 43, 42, 42, 42, 42,
+  20          42, 42, 42, 43, 43, 43, 44, 44, 45, 46, 47, 47, 48, 49, 51, 52,
+  21          53, 55, 56, 58, 59, 61, 63, 64, 66, 68, 70, 72, 74, 77, 79, 81,
+  22          83, 86, 88, 91, 93, 96, 99,100,103,106,109,112,116,119,122,125};
+  23          
+  24          void delay(unsigned int time){
+  25   1        unsigned int i,j;
+  26   1        for(i=0;i<time;i++)
+  27   1          for(j=0;j<1275;j++);
+  28   1      }
+  29          
+  30          void lcd_cmd(unsigned char cmd){
+  31   1        RS=0;
+  32   1        LCD=cmd;
+  33   1        E=1;
+  34   1        delay(1);
+  35   1        E=0;
+  36   1        delay(2);
+  37   1      }
+  38          
+  39          void lcd_init(){
+  40   1        delay(20);
+  41   1        
+  42   1        lcd_cmd(0x38);
+  43   1        delay(2);
+  44   1        
+  45   1        lcd_cmd(0x0C);
+  46   1        delay(2);
+  47   1        
+  48   1        lcd_cmd(0x06);
+  49   1        delay(2);
+  50   1        
+  51   1        lcd_cmd(0x01);
+  52   1        delay(10);
+  53   1        
+C51 COMPILER V9.60.7.0   PRACTICE                                                          11/02/2025 23:52:18 PAGE 2   
+
+  54   1        lcd_cmd(0x80);
+  55   1        delay(20);
+  56   1      }
+  57          
+  58          void lcd_data(unsigned char dat){
+  59   1        RS=1;
+  60   1        LCD=dat;
+  61   1        E=1;
+  62   1        delay(1);
+  63   1        E=0;
+  64   1        delay(2);
+  65   1      }
+  66          
+  67          void lcd_string(unsigned char* str){
+  68   1        unsigned int i;
+  69   1        for(i=0;str[i]!='\0';i++){
+  70   2          lcd_data(str[i]);
+  71   2        }
+  72   1      }
+  73          
+  74          void lcd_print(unsigned char val){
+  75   1        lcd_data((val/100)+'0');
+  76   1        lcd_data(((val/10)%10)+'0');
+  77   1        lcd_data((val%10)+'0');
+  78   1      }
+  79          
+  80          void main(){
+  81   1        unsigned int idx=0;
+  82   1        P3=0X00;
+  83   1        P1=0X00;
+  84   1        P2=0X00;
+  85   1        lcd_init();
+  86   1        lcd_string("DAC Converter");
+  87   1        delay(200);
+  88   1        lcd_cmd(0x01);
+  89   1        lcd_cmd(0x80);
+  90   1        while(1){
+  91   2          unsigned char v=sine[idx];
+  92   2          DAC=v;
+  93   2          lcd_cmd(0x80);
+  94   2          lcd_print(v);
+  95   2          idx++;
+  96   2          delay(20);
+  97   2          if(idx>=SAMPLES)  idx=0;
+  98   2        }
+  99   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    305    ----
+   CONSTANT SIZE    =    270    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

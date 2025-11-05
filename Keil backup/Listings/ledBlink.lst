@@ -1,0 +1,43 @@
+C51 COMPILER V9.60.7.0   LEDBLINK                                                          08/20/2025 15:12:22 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE LEDBLINK
+OBJECT MODULE PLACED IN .\Objects\ledBlink.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ledBlink.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\
+                    -ledBlink.lst) TABS(2) OBJECT(.\Objects\ledBlink.obj)
+
+line level    source
+
+   1          #include<reg51.h>             // header file
+   2          sbit LED = P2^0;          // p2^0 is the port number of led
+   3          
+   4          void delay(unsigned int time) {
+   5   1        int i,j;
+   6   1        for(i=0; i<time; i++) {     // outloop for time interval between blink
+   7   2            for(j=0; j<1275; j++);  // approx 1ms delay for 11.0592Mhz  1275 blinking speed larger the value more b
+             -linking frequency
+   8   2        }
+   9   1      }
+  10          
+  11          void main() {
+  12   1        while(1) {
+  13   2          LED = 0;
+  14   2          delay(100);
+  15   2          LED = 1;
+  16   2          delay(100);
+  17   2        }
+  18   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     48    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

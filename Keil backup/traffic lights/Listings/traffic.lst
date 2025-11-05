@@ -1,0 +1,54 @@
+C51 COMPILER V9.60.7.0   TRAFFIC                                                           08/21/2025 10:56:32 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE TRAFFIC
+OBJECT MODULE PLACED IN .\Objects\traffic.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE traffic.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\t
+                    -raffic.lst) TABS(2) OBJECT(.\Objects\traffic.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          sbit red_led=P2^0;
+   3          sbit yellow_led=P2^1;
+   4          sbit green_led=P2^2;
+   5          void delay(unsigned int time){
+   6   1        int i,j;
+   7   1        for(i=0;i<time;i++){
+   8   2          for(j=0;j<1275;j++);
+   9   2        }   
+  10   1      }
+  11          int main(){
+  12   1        while(1){
+  13   2          red_led=1;
+  14   2          yellow_led=0;
+  15   2          green_led=0;
+  16   2          delay(100);
+  17   2      
+  18   2          red_led=0;
+  19   2          yellow_led=1;
+  20   2          green_led=0;
+  21   2          delay(100);
+  22   2          
+  23   2          red_led=0;
+  24   2          yellow_led=0;
+  25   2          green_led=1;
+  26   2          delay(100);
+  27   2        }
+  28   1        return 0;
+  29   1      }
+*** WARNING C294 IN LINE 28 OF traffic.c: unreachable code
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     65    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

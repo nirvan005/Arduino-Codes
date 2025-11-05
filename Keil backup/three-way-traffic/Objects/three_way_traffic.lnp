@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\three_way.obj" 
+TO ".\Objects\three_way_traffic" 
+PRINT(".\Listings\three_way_traffic.m51")

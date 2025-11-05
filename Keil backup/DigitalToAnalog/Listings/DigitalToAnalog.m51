@@ -1,0 +1,218 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    09/15/2025  02:37:56  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\dac.obj TO .\Objects\DigitalToAnalog PRINT (.\Listings\Digi
+>> talToAnalog.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\dac.obj (DAC)
+
+
+LINK MAP OF MODULE:  .\Objects\DigitalToAnalog (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         _DATA_GROUP_
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0049H     UNIT         ?PR?MAIN?DAC
+            CODE    0849H     002BH     UNIT         ?PR?_LCD_PRINT3?DAC
+            CODE    0874H     0022H     UNIT         ?PR?LCD_INIT?DAC
+            CODE    0896H     0020H     UNIT         ?PR?_DELAY_MS?DAC
+            CODE    08B6H     0010H     UNIT         ?CO?DAC
+            CODE    08C6H     000EH     UNIT         ?PR?_LCD_CMD?DAC
+            CODE    08D4H     000CH     UNIT         ?C_C51STARTUP
+            CODE    08E0H     000BH     UNIT         ?PR?LCD_PULSE?DAC
+            CODE    08EBH     0007H     UNIT         ?PR?_LCD_DATA?DAC
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\DigitalToAnalog (?C_STARTUP)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?DAC
+
+?PR?MAIN?DAC                   0008H    0003H
+  +--> ?PR?LCD_INIT?DAC
+  +--> ?CO?DAC
+  +--> ?PR?_LCD_CMD?DAC
+  +--> ?PR?_LCD_PRINT3?DAC
+  +--> ?PR?_DELAY_MS?DAC
+
+?PR?LCD_INIT?DAC               -----    -----
+  +--> ?PR?_DELAY_MS?DAC
+  +--> ?PR?_LCD_CMD?DAC
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  09/15/2025  02:37:56  PAGE 2
+
+
+
+?PR?_LCD_CMD?DAC               -----    -----
+  +--> ?PR?LCD_PULSE?DAC
+  +--> ?PR?_DELAY_MS?DAC
+
+?PR?LCD_PULSE?DAC              -----    -----
+  +--> ?PR?_DELAY_MS?DAC
+
+?PR?_LCD_PRINT3?DAC            -----    -----
+  +--> ?PR?_LCD_DATA?DAC
+
+?PR?_LCD_DATA?DAC              -----    -----
+  +--> ?PR?LCD_PULSE?DAC
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\DigitalToAnalog (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:08D4H         SEGMENT       ?C_C51STARTUP
+  I:000BH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:08D7H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:08D4H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:08D4H         LINE#         133
+  C:08D6H         LINE#         134
+  C:08D7H         LINE#         135
+  C:08D8H         LINE#         136
+  C:08DAH         LINE#         185
+  C:08DDH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        DAC
+  C:0000H         SYMBOL        _ICE_DUMMY_
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  09/15/2025  02:37:56  PAGE 3
+
+
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:08B6H         PUBLIC        sine_table
+  C:0800H         PUBLIC        main
+  C:08EBH         SYMBOL        _lcd_data
+  C:08E0H         SYMBOL        lcd_pulse
+  B:0090H.1       PUBLIC        LCD_EN
+  C:08C6H         SYMBOL        _lcd_cmd
+  C:0874H         SYMBOL        lcd_init
+  C:0896H         SYMBOL        _delay_ms
+  B:0090H.0       PUBLIC        LCD_RS
+  C:0849H         SYMBOL        _lcd_print3
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        ms
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0896H         LINE#         12
+  C:0896H         LINE#         14
+  C:08B5H         LINE#         15
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          LCD_PULSE
+  C:08E0H         LINE#         16
+  C:08E0H         LINE#         17
+  C:08E2H         LINE#         18
+  C:08E4H         LINE#         19
+  -------         ENDPROC       LCD_PULSE
+  -------         PROC          _LCD_CMD
+  D:0007H         SYMBOL        c
+  C:08C6H         LINE#         21
+  C:08C6H         LINE#         22
+  C:08C8H         LINE#         23
+  C:08CAH         LINE#         24
+  C:08CDH         LINE#         25
+  -------         ENDPROC       _LCD_CMD
+  -------         PROC          _LCD_DATA
+  D:0007H         SYMBOL        d
+  C:08EBH         LINE#         27
+  C:08EBH         LINE#         28
+  C:08EDH         LINE#         29
+  C:08EFH         LINE#         30
+  -------         ENDPROC       _LCD_DATA
+  -------         PROC          LCD_INIT
+  C:0874H         LINE#         33
+  C:0874H         LINE#         34
+  C:087BH         LINE#         35
+  C:0880H         LINE#         36
+  C:0885H         LINE#         37
+  C:088AH         LINE#         38
+  C:088FH         LINE#         39
+  -------         ENDPROC       LCD_INIT
+  -------         PROC          _LCD_PRINT3
+  D:0001H         SYMBOL        v
+  C:0849H         LINE#         42
+  C:084BH         LINE#         43
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  09/15/2025  02:37:56  PAGE 4
+
+
+  C:0856H         LINE#         44
+  C:0867H         LINE#         45
+  -------         ENDPROC       _LCD_PRINT3
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        idx
+  -------         DO            
+  D:000AH         SYMBOL        v
+  -------         ENDDO         
+  -------         ENDDO         
+  C:0800H         LINE#         48
+  C:0800H         LINE#         49
+  C:0805H         LINE#         50
+  C:0807H         LINE#         51
+  C:0809H         LINE#         52
+  C:080BH         LINE#         53
+  C:080EH         LINE#         55
+  C:080EH         LINE#         56
+  C:081EH         LINE#         57
+  C:0820H         LINE#         58
+  C:0825H         LINE#         59
+  C:082AH         LINE#         60
+  C:0832H         LINE#         61
+  C:0840H         LINE#         62
+  C:0847H         LINE#         63
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        DAC
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00F5H BYTE (11%) *
+******************************************************************************
+
+Program Size: data=12.0 xdata=0 code=245
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

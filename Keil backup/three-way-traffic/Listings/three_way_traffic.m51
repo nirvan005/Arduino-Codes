@@ -1,0 +1,169 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    08/21/2025  11:53:43  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\three_way.obj TO .\Objects\three_way_traffic PRINT (.\Listi
+>> ngs\three_way_traffic.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\three_way.obj (THREE_WAY)
+
+
+LINK MAP OF MODULE:  .\Objects\three_way_traffic (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0051H     UNIT         ?PR?MAIN?THREE_WAY
+            CODE    0851H     0020H     UNIT         ?PR?_DELAY?THREE_WAY
+            CODE    0871H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\three_way_traffic (?C_STARTUP)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?THREE_WAY
+
+?PR?MAIN?THREE_WAY
+  +--> ?PR?_DELAY?THREE_WAY
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\three_way_traffic (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0871H         SEGMENT       ?C_C51STARTUP
+  I:0008H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  08/21/2025  11:53:43  PAGE 2
+
+
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0874H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0871H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0871H         LINE#         133
+  C:0873H         LINE#         134
+  C:0874H         LINE#         135
+  C:0875H         LINE#         136
+  C:0877H         LINE#         185
+  C:087AH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        THREE_WAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00A0H.0       PUBLIC        red_led1
+  B:00A0H.3       PUBLIC        red_led2
+  B:00B0H.0       PUBLIC        red_led3
+  C:0851H         PUBLIC        _delay
+  C:0800H         PUBLIC        main
+  B:00A0H.2       PUBLIC        green_led1
+  B:00A0H.5       PUBLIC        green_led2
+  B:00B0H.2       PUBLIC        green_led3
+  B:00A0H.1       PUBLIC        yellow_led1
+  B:00A0H.4       PUBLIC        yellow_led2
+  B:00B0H.1       PUBLIC        yellow_led3
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        time
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0851H         LINE#         14
+  C:0851H         LINE#         16
+  C:085BH         LINE#         17
+  C:0869H         LINE#         18
+  C:0870H         LINE#         19
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  C:0800H         LINE#         20
+  C:0800H         LINE#         21
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  08/21/2025  11:53:43  PAGE 3
+
+
+  C:0800H         LINE#         22
+  C:0802H         LINE#         23
+  C:0804H         LINE#         24
+  C:0806H         LINE#         25
+  C:0808H         LINE#         26
+  C:080AH         LINE#         27
+  C:080CH         LINE#         28
+  C:080EH         LINE#         29
+  C:0810H         LINE#         30
+  C:0812H         LINE#         31
+  C:0819H         LINE#         33
+  C:081BH         LINE#         34
+  C:081DH         LINE#         35
+  C:081FH         LINE#         36
+  C:0822H         LINE#         38
+  C:0824H         LINE#         39
+  C:0826H         LINE#         40
+  C:0828H         LINE#         41
+  C:082AH         LINE#         42
+  C:082CH         LINE#         43
+  C:082EH         LINE#         44
+  C:0831H         LINE#         46
+  C:0833H         LINE#         47
+  C:0835H         LINE#         48
+  C:0837H         LINE#         49
+  C:083AH         LINE#         51
+  C:083CH         LINE#         52
+  C:083EH         LINE#         53
+  C:0840H         LINE#         54
+  C:0842H         LINE#         55
+  C:0844H         LINE#         56
+  C:0846H         LINE#         57
+  C:0848H         LINE#         58
+  C:084AH         LINE#         59
+  C:084CH         LINE#         60
+  C:084FH         LINE#         61
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        THREE_WAY
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0080H BYTE ( 6%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=128
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

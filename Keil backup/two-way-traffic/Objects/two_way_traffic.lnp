@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\two_way_traffic.obj" 
+TO ".\Objects\two_way_traffic" 
+PRINT(".\Listings\two_way_traffic.m51")

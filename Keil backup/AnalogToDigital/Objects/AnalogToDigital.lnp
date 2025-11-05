@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\adc.obj" 
+TO ".\Objects\AnalogToDigital" 
+PRINT(".\Listings\AnalogToDigital.m51")
