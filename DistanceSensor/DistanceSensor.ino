@@ -5,7 +5,6 @@
 //LiquidCrystal(rs, enable, d4, d5, d6, d7);
 LiquidCrystal lcd(13,12,8,9,10,11);
 
-
 void setup() {
   lcd.begin(16, 2);
   lcd.clear();
